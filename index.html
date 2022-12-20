@@ -4,174 +4,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BBFS GENERATOR</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>SEO</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-image: url(https://i.postimg.cc/nr7KXCPL/10871863.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: 100vh;
-            padding: 0 1em;
+            margin: .3em;
         }
 
-        /* Start Header */
-        .header {
-            padding-top: 2em;
-            text-align: center;
-            margin-bottom: 2em;
-        }
-
-        .header img {
-            width: 7em;
-            margin: 0 auto 1em;
-            display: block;
-        }
-
-        .header h1 {
-            color: white;
-            text-shadow: 3px 3px black;
-        }
-        /* End Header */
-
-        /* Start BBFS Generator */
-        .bbfs-generator {
+        .container {
             width: 100%;
-            max-width: 900px;
-            background-color: rgba(0, 0, 0, .7);
-            box-shadow: 0 0 15px black;
-            border-radius: 30px;
-            padding: 1em;
-            color: white;
-            text-align: center;
-        }
-
-        .bbfs-generator input, .bbfs-generator select , .bbfs-generator textarea{
-            width: 100%;
-            max-width: 500px;
+            max-width: 800px;
+            /* border: 3px solid black; */
             margin: auto;
             text-align: center;
+            padding: 1em;
         }
-        /* End BBFS Generator */
+
+        h1 {
+            margin-bottom: .3em;
+        }
+
+        .links {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            padding: .5em;
+            font-size: 1.2em;
+            margin-bottom: .5em;
+        }
+
+        .button-gas {
+            display: block;
+            margin: auto;
+            width: 100%;
+            max-width: 600px;
+            padding: .3em 1em;
+            font-size: 1.2em;
+            background-color: rgb(0, 132, 255);
+            color: white;
+            border: none;
+        }
+
+        .button-gas:hover {
+            background-color: rgb(0, 97, 189);
+        }
     </style>
 </head>
 <body>
-        <div class="container header">
-            <a href=""><img src="https://i.postimg.cc/HLWZc9mP/logo-mega-group.png" alt="Logo MegaGroup"></a>
-            <h1>BBFS Generator MEGAGROUP Togel Hadiah Terbesar</h1>
-        </div>
-    
-    <div class="container bbfs-generator">
-        <form>
-            <div class="mb-3">
-              <label for="angkaTarungDalam" class="form-label">Angka Tarung Dalam</label>
-              <input type="number" class="form-control" id="angkaTarungDalam" aria-describedby="kolomAngkaTarungDalam" min="1" max="9999999999">
-            </div>
-            <div class="mb-3">
-              <label for="banyakDigit" class="form-label">2D/3D/4D</label>
-              <select id="banyakDigit" class="form-select" aria-label="Default select example">
-                <option selected value="0" disabled>2D/3D/4D</option>
-                <option value="2" disabled>2D</option>
-                <option value="3" disabled>3D</option>
-                <option value="4" disabled>4D</option>
-              </select>
-            </div>
-            <button type="button" class="btn btn-dark mb-3">Hasilkan Angka Tarung!</button>
-          </form>
-
-          <div class="form-floating">
-            <textarea class="form-control" placeholder="Hasil Angka Tarung" style="height: 300px" disabled readonly></textarea>
-          </div>
+    <div class="container">
+        <h1>SEO TOOLS</h1>
+        <textarea name="links" class="links" rows="30" placeholder="Masukkan Link"></textarea>
+        <button class="button-gas">Gaskan</button>
     </div>
 
     <script>
-        const angkaTarungDalam = document.querySelector('#angkaTarungDalam');
-        const banyakDigit = document.querySelector('#banyakDigit')
-        const banyakDigitOption = document.querySelectorAll('#banyakDigit option');
-        const hasilkanAngkaTarung = document.querySelector('.bbfs-generator button');
-        const hasilBBFS = document.querySelector('.bbfs-generator textarea');
-        
-        
-        angkaTarungDalam.onkeyup = function() {
-            if(angkaTarungDalam.value >= 1 && angkaTarungDalam.value <= 9999999999) {
-                if(angkaTarungDalam.value.length >= 2) {
-                    banyakDigitOption[1].removeAttribute('disabled');
-                } else {
-                    banyakDigitOption[1].setAttribute('disabled', '')
-                }
 
-                if(angkaTarungDalam.value.length >= 3) {
-                    banyakDigitOption[2].removeAttribute('disabled');
-                } else {
-                    banyakDigitOption[2].setAttribute('disabled', '')
-                }
+        // if(links.length == 0) {
+        //     console.log('tes');
+        // }
 
-                if(angkaTarungDalam.value.length >= 4) {
-                    banyakDigitOption[3].removeAttribute('disabled');
-                } else {
-                    banyakDigitOption[3].setAttribute('disabled', '')
-                }
-            }
-        };
-
-        hasilkanAngkaTarung.addEventListener('click', function(){
-            if(angkaTarungDalam.value == '') {
-                hasilBBFS.innerHTML = 'Anda harus mengisi angka BBFS anda untuk mengetahui angka tarung!';
+        const buttonGas = document.querySelector('.button-gas');
+        buttonGas.addEventListener('click', function() {
+            const linksTextArea = document.querySelector('.links');
+            const links = (linksTextArea.value).split('\n');
+            if(links == '') {
                 return;
             }
 
-            if(banyakDigit.value == '2' || banyakDigit.value == '3' || banyakDigit.value == '4'){
-                const angkaBBFS = angkaTarungDalam.value.split('');
-                let angkaHasilBBFS = [];
-                
-                if(banyakDigit.value == '2') {
-                    for(let x = 0; x < angkaBBFS.length; x++ ){
-                        for(let y = 0; y < angkaBBFS.length; y++){
-                            const newAngka = angkaBBFS[x] + angkaBBFS[y];
-                            angkaHasilBBFS.push(newAngka);
-                        }
-                    }
-                }
-
-                if(banyakDigit.value == '3') {
-                    for(let x = 0; x < angkaBBFS.length; x++ ){
-                        for(let y = 0; y < angkaBBFS.length; y++){
-                            for(let z = 0; z < angkaBBFS.length; z++){
-                                const newAngka = angkaBBFS[x] + angkaBBFS[y] + angkaBBFS[z];
-                                angkaHasilBBFS.push(newAngka);
-                            }
-                           
-                        }
-                    }
-                }
-
-                if(banyakDigit.value == '4') {
-                    for(let x = 0; x < angkaBBFS.length; x++ ){
-                        for(let y = 0; y < angkaBBFS.length; y++){
-                            for(let z = 0; z < angkaBBFS.length; z++){
-                                for(let a = 0; a < angkaBBFS.length; a++){
-                                    const newAngka = angkaBBFS[x] + angkaBBFS[y] + angkaBBFS[z] + angkaBBFS[a];
-                                    angkaHasilBBFS.push(newAngka);
-                                }
-                            }                           
-                        }
-                    }
-                }
-
-                const jumlahHasil = angkaHasilBBFS.length;
-
-                hasilBBFS.innerHTML = "Jumlah Line: " + jumlahHasil + ".\nAngka Tarung: " + angkaHasilBBFS.join('*');
-                
-            } else {
-                hasilBBFS.innerHTML = 'Anda belum memilih ingin hasil 2D/3D/4D';
-                return;
-            }
-        })
+            links.forEach(function(link){
+                window.open(link, '_blank');
+            })
+        });
 
     </script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
