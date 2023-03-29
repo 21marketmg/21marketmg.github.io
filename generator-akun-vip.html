@@ -20,6 +20,14 @@
     <option value="Shiowla">Shiowla</option>
     <option value="Mega4D">Mega4D</option>
 </select>
+<select name="server" id="server">
+    <option value="">Pilih Server</option>
+    <option value="Indonesia">Indonesia</option>
+    <option value="Singapore">Singapore</option>
+    <option value="Japan">Japan</option>
+    <option value="China">China</option>
+    <option value="Thailand">Thailand</option>
+</select>
 <button class="generate-now">generate akun vip</button>
 </body>
 
@@ -37,14 +45,12 @@
     }
 
     window.addEventListener('DOMContentLoaded', function() {
-        
-        
         const generateNow = document.querySelector('.generate-now');
-
 
         generateNow.addEventListener('click', function(e) {
             const username = document.querySelector('#username');
             const website = document.querySelector('#website');
+            const server = document.querySelector('#server');
             const randomCode = makeid(3);
 
             if(username.value == '') {
@@ -53,8 +59,8 @@
 
             let targetURL = '';
 
-            if (website.value == '') {
-                return alert('Nama situs harus diisi');
+            if (website.value == "") {
+                return alert('Anda harus memilih nama situs');
             } else if (website.value == 'Rokokslot') {
                 targetURL = 'https://rokokslotvip4.com/register';
             } else if (website.value == 'For4D'){
@@ -71,7 +77,11 @@
                 targetURL = 'https://csmega4d.com/signup';
             }
 
-            if (window.confirm('Silahkan daftar di situs '+ website.value +' dengan username berikut '+ username.value + 'VIP' + randomCode))
+            if(server.value == '') {
+                return alert('Anda harus memilih nama server');
+            }
+
+            if (window.confirm('Silahkan daftar di situs '+ website.value +' dengan username VIP berikut '+ username.value + 'VIP' + randomCode + ' . Username tersebut telah berhasil masuk kedalam daftar akun vip di server ' + server.value))
             {
                 window.location.href= targetURL;
             }
