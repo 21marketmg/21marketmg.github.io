@@ -12,10 +12,13 @@
 <input type="username" id="username" placeholder="Masukkan username anda">
 <select name="nama-situs" id="website">
     <option value="">Pilih nama Situs</option>
-    <option value="Rokokbet">Rokokbet</option>
-    <option value="Okewla">Okewla</option>
-    <option value="For4D">For4D</option>
     <option value="Rokokslot">Rokokslot</option>
+    <option value="For4D">For4D</option>
+    <option value="Rokokbet">Rokokbet</option>
+    <option value="Bet4D">Bet4D</option>
+    <option value="Okewla">Okewla</option>
+    <option value="Shiowla">Shiowla</option>
+    <option value="Mega4D">Mega4D</option>
 </select>
 <button class="generate-now">generate akun vip</button>
 </body>
@@ -32,21 +35,53 @@
         }
         return result;
     }
-window.addEventListener('DOMContentLoaded', function() {
-    
-    
-    const generateNow = document.querySelector('.generate-now');
+
+    window.addEventListener('DOMContentLoaded', function() {
+        
+        
+        const generateNow = document.querySelector('.generate-now');
 
 
-    generateNow.addEventListener('click', function(e) {
-        const username = document.querySelector('#username');
-        const website = document.querySelector('#website');
-        const randomCode = makeid(3);
-        console.log(username);
+        generateNow.addEventListener('click', function(e) {
+            const username = document.querySelector('#username');
+            const website = document.querySelector('#website');
+            const randomCode = makeid(3);
 
-        alert('Silahkan daftar di situs '+ website.value +' dengan username berikut '+ username.value + 'VIP' + randomCode);
-    });
-})
+            if(username.value == '') {
+                return alert('Username harus diisi');
+            }
+
+            let targetURL = '';
+
+            if (website.value == '') {
+                return alert('Nama situs harus diisi');
+            } else if (website.value == 'Rokokslot') {
+                targetURL = 'https://rokokslotvip4.com/register';
+            } else if (website.value == 'For4D'){
+                targetURL = 'https://totofor4d.com/register.php';
+            } else if (website.value == 'Rokokbet'){
+                targetURL = 'https://csrokokbet.com/register.php';
+            } else if (website.value == 'Bet4D'){
+                targetURL = 'https://csbet4d1.com/signup';
+            } else if (website.value == 'Okewla'){
+                targetURL = 'https://bookewla.com/signup';
+            } else if (website.value == 'Shiowla'){
+                targetURL = 'https://mgshiowla.com/signup';
+            } else if (website.value == 'Mega4D'){
+                targetURL = 'https://csmega4d.com/signup';
+            }
+
+            if (window.confirm('Silahkan daftar di situs '+ website.value +' dengan username berikut '+ username.value + 'VIP' + randomCode))
+            {
+                window.location.href= targetURL;
+            }
+            else
+            {
+                // They clicked no
+                return;
+            }
+        });
+    })
 
 </script>
 </html>
